@@ -95,11 +95,11 @@ import javax.swing.text.TabStop;
 		} catch (FileNotFoundException e) {
 			try {
 				PrintWriter pw = new PrintWriter("config.smrdv");
-				pw.println("read|readln|write|writeln|crt|for|to|do|while|repeat|until|if|else|case|of");
-				pw.println("begin|end|.|;|'|uses|program|function|procedure|var|integer|string|longint|float|char|smallint|byte|shortint|cardinal|int64|double");
+				pw.println("read|readln|write|writeln|crt|for|to|do|while|repeat|until|if|else|then|case|of");
+				pw.println("begin|end|uses|program|function|procedure|var|integer|string|longint|float|char|smallint|byte|shortint|cardinal|int64|double");
 				pw.close();
 				codered = "read|readln|write|writeln|crt|for|to|do|while|repeat|until|if|else|case|of";
-				codeblue = "begin|end|.|;|'|uses|program|function|procedure|var|integer|string|longint|float|char|smallint|byte|shortint|cardinal|int64|double";
+				codeblue = "begin|end|uses|program|function|procedure|var|integer|string|longint|float|char|smallint|byte|shortint|cardinal|int64|double";
 			} catch (FileNotFoundException e1) {
 				JOptionPane.showMessageDialog(null,
 						"file not found exception on ln 105");
@@ -456,11 +456,11 @@ import javax.swing.text.TabStop;
 			public void actionPerformed(ActionEvent e) {
 				JFrame frame = new JFrame("Font Setting");
 				JTextField font = new JTextField(7);
-				font.setText("Courier New");
+				font.setText(textarea.getFont().getFamily());
 				JTextField style = new JTextField(7);
-				style.setText("0");
+				style.setText(textarea.getFont().getStyle()+"");
 				JTextField size = new JTextField(7);
-				size.setText("16");
+				size.setText(textarea.getFont().getSize()+"");
 				JButton ok = new JButton("OK");
 				ok.addActionListener(new ActionListener() {
 
@@ -509,6 +509,7 @@ import javax.swing.text.TabStop;
 				frame.add(text1);
 				frame.setLayout(new GridLayout(2, 1));
 				frame.setVisible(true);
+				frame.setResizable(false);
 				frame.setSize(300, 100);
 				frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				frame.setLocationRelativeTo(null);
@@ -592,7 +593,7 @@ import javax.swing.text.TabStop;
 
 		});
 
-		setTitle("Pascal IDE");
+		setTitle("Pascal Editor");
 		setSize(600, 400);
 		setVisible(true);
 		setLocationRelativeTo(null);
